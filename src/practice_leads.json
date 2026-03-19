@@ -1,0 +1,18 @@
+[
+  {
+    "username": "karima.lead",
+    "display_name": "Karima Slalom",
+    "role": "practice_lead",
+    "practice_areas": ["*"],
+    "salt": "de5b0b72f9050c195ecf8474f4b9b483",
+    "password_hash": "dc2e92e7a1d5013f3ecc751b434e503a4de55d91d89449bc6910bd3c70aee248"
+  },
+  {
+    "username": "taylor.practice",
+    "display_name": "Taylor Practice",
+    "role": "practice_lead",
+    "practice_areas": ["Technology"],
+    "salt": "f7d99acd23b5f4cce87f6f3daf29a7f9",
+    "password_hash": "1ca0a86733e9e9fd78be2610e1f849fb11bd262fdd1790c86dda2bde6f82a9d1"
+  }
+]
