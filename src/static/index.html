@@ -8,11 +8,20 @@
   </head>
   <body>
     <header>
-      <div class="header-content">
-        <img src="https://colby-timm.github.io/images/byte-teacher.png" alt="Byte mascot" class="mascot" />
-        <div class="header-text">
-          <h1>Slalom Capabilities Management</h1>
-          <h2>Consulting Expertise Platform</h2>
+      <div class="header-bar">
+        <div class="header-content">
+          <img src="https://colby-timm.github.io/images/byte-teacher.png" alt="Byte mascot" class="mascot" />
+          <div class="header-text">
+            <h1>Slalom Capabilities Management</h1>
+            <h2>Consulting Expertise Platform</h2>
+          </div>
+        </div>
+        <div class="auth-controls">
+          <div id="auth-status" class="auth-status">Consultant self-service mode</div>
+          <div class="auth-actions">
+            <button id="login-button" type="button" class="secondary-button">Practice Lead Sign In</button>
+            <button id="logout-button" type="button" class="secondary-button hidden">Sign Out</button>
+          </div>
         </div>
       </div>
     </header>
@@ -21,30 +30,67 @@
       <section id="capabilities-container">
         <h3>Available Capabilities</h3>
         <div id="capabilities-list">
-          <!-- Capabilities will be loaded here -->
           <p>Loading capabilities...</p>
         </div>
       </section>
 
-      <section id="register-container">
-        <h3>Register Your Expertise</h3>
-        <form id="register-form">
-          <div class="form-group">
-            <label for="email">Consultant Email:</label>
-            <input type="email" id="email" required placeholder="your-email@slalom.com" />
-          </div>
-          <div class="form-group">
-            <label for="capability">Select Capability:</label>
-            <select id="capability" required>
-              <option value="">-- Select a capability --</option>
-              <!-- Capability options will be loaded here -->
-            </select>
-          </div>
-          <button type="submit">Register Expertise</button>
-        </form>
-        <div id="message" class="hidden"></div>
+      <section id="control-panel">
+        <div class="panel-block">
+          <h3 id="workflow-title">Request Capability Access</h3>
+          <p id="workflow-description" class="panel-description">
+            Consultants can submit access requests. Practice leads can sign in to approve requests,
+            register consultants directly, and remove assignments.
+          </p>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="email">Consultant Email:</label>
+              <input type="email" id="email" required placeholder="your-email@slalom.com" />
+            </div>
+            <div class="form-group">
+              <label for="capability">Select Capability:</label>
+              <select id="capability" required>
+                <option value="">-- Select a capability --</option>
+              </select>
+            </div>
+            <button id="submit-button" type="submit">Submit Access Request</button>
+          </form>
+          <div id="message" class="hidden"></div>
+          <p id="workflow-note" class="helper-text">
+            Sign in as a practice lead to approve pending requests and manage consultant assignments.
+          </p>
+        </div>
+
+        <div id="audit-panel" class="panel-block hidden">
+          <h3>Recent Audit Activity</h3>
+          <ul id="audit-list" class="audit-list"></ul>
+        </div>
       </section>
     </main>
+
+    <div id="login-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <h3 id="login-title">Practice Lead Sign In</h3>
+        <p class="panel-description">
+          Sign in with a practice lead account to review requests, approve registrations, and manage assignments.
+        </p>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required autocomplete="current-password" />
+          </div>
+          <div class="modal-actions">
+            <button type="submit">Sign In</button>
+            <button id="cancel-login" type="button" class="secondary-button">Cancel</button>
+          </div>
+        </form>
+        <div id="login-message" class="hidden"></div>
+      </div>
+    </div>
 
     <footer>
       <div class="footer-content">
